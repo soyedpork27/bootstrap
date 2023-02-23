@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON 영화 데이터 출력하기</title>
+  <!-- 부트스트랩 서식 -->
+  <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
+
+  <!-- 제이쿼리 라이브러리  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- 부트스트랩 스크립트 -->
+  <script src="./script/bootstrap.js"></script>
+
+  <style>
+    caption {
+      display : none;
+    }
+
+    .btn-toolbar {
+      width : 200px;
+      margin : 0 auto;
+    }
+
+    .btn{
+    }
+
+    .right {
+      width : 180px;
+      margin-left : 85%;
+    }
+
+
+  </style>
+
+  <script>
+    $(document).ready(function(){
+
+      // JSON 데이터를 불러온다.
+      $.getJSON('./data/movie.json',function(data){
+
+        // 테이블을 여는 태그와 상단 요소들을 작성해 변수에 담는다.
+        let movie = `
+        <table class="table table-striped table-hover">
+          <caption>영화정보 데이터 출력</caption>
+          <thead class="table-dark">
+          <tr>
+            <th>순번</th><th>박스오피스 순위</th><th>영화명</th><th>영화 개봉일</th><th>당일 상영 횟수</th>  
+          </tr>
+          </thead><tbody>
+        `;
+
+        // JSON 데이터 배열에서 객체(하나의 데이터 묶음)를 반복문으로 선택한다.
+        for(key in data){
+
+          // 테이블 열을 여는 태그를 변수에 추가한다.
+          movie +=`<tr>`;
+
+            // 객체(하나의 데이터 묶음)에서 key와 value를 하나씩 불러온다.
+            for(let i in data[key]){
+              movie+=`<td>${data[key][i]}</td>`;
+            }
+
+            //테이블 열을 닫는 태그를 변수에 추가한다.
+          movie +=`</tr>`;
+        }
+
+        // 테이블을 닫는 태그를 변수에 담는다.
+        movie +=`</tbody>
+        </table>
+
+
+        <div class="btn-toolbar" role="toolbar" aria-lable="Toolbar with button groups">
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary">1</button>
+            <button type="button" class="btn btn-primary">2</button>
+            <button type="button" class="btn btn-primary">3</button>
+            <button type="button" class="btn btn-primary">4</button>
+          </div>
+        </div>
+
+        <p class="right">
+          <a href="#" title="" class="btn btn-primary">글쓰기</a>
+        </p>
+        `;
+
+        // 데이터를 정리한 테이블 변수를 출력한다.
+        $('#movie_box').html(movie);
+      });
+    });
+  </script>
+</head>
+<body>
+  <article id="movie_box">
+
+  </article>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 반복문</title>
+  <script>
+    // 1. while문
+    
+    let arr01 = ['일','월','화','수','목','금','토'];
+
+    for(let i in arr01){
+      document.write(arr01[i]);
+    }
+
+    let person = {
+      'name' : '이순신',
+      'age' : 23
+    }
+
+    for (let i in person){
+      document.write('<p>'+ i ,  person[i] + ' </p>');
+    }
+
+    let arr02 = ['김치','김','밥','국','반찬'];
+
+    for(let i =0;i<arr02.length;i++){
+      document.write(`<p>${arr02[i]}</p>`);
+    }
+
+
+    for(let i of arr02){
+      document.write(`<p>${i}</p>`);
+    }
+
+
+    let arr03 = new Set([1,2,3,4,5,6,8,10,20,10]);
+
+    for(let value of arr03){
+      document.write(value);
+    }
+
+
+
+  </script>
+</head>
+<body>
+  <ul>
+    <li>while</li>
+    <li>do while</li>
+    <li>for</li>
+    <li>for in</li>
+    <li>for of</li>
+  </ul>
+  
+</body>
+</html>

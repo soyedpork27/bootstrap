@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 json 데이터 출력하기</title>
+  <style>
+    table {
+      width : 300px;
+      border : 1px solid #000;
+      
+    }
+
+    tr{
+      border : 1px solid #000;
+    }
+    td{
+      border : 1px solid #000;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  
+
+  <script>
+    $(document).ready(function(){
+      $.getJSON('./data/test_drive.json',function(data){
+
+        document.write('<table>');
+        document.write('<caption>시승신청 현황</caption>');
+
+        for(key in data){
+          document.write('<tr>');
+          for(let i in data[key]){
+              document.write('<td>'+ i + ' : ' + data[key][i] +'</td>');
+            }
+            document.write('</tr>');
+        }
+        document.write('<table>');
+
+      });
+    });
+  </script>
+</head>
+<body>
+  <h2>자바스크립트 json 데이터 출력하기</h2>
+  <p>닷홈 SQL 데이터 베이스에 저장된 'test_drive' 테이블의 자료를 'json'파일로 저장하여 자바스크립트로 출력해보기</p>
+
+
+  <!-- 5*9 -->
+</body>
+</html>
